@@ -1,0 +1,11 @@
+.search__btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+  .search__btns{
+    justify-content: center;
+  }
+}

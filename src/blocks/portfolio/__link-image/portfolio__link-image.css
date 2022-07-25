@@ -1,0 +1,22 @@
+.portfolio__link-image {
+ width: 29px;
+ height: 60px;
+ background-image: url(../../../images/arrow.svg);
+ background-repeat: no-repeat;
+ background-position: center;
+ cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio__link-image {
+    width: 18px;
+    height: 28px;
+    background-image: url(../../../images/link-small.svg);
+   }
+}
+
+.portfolio__link-image:hover {
+  opacity: 0.8;
+  transition: .3s;
+}
+

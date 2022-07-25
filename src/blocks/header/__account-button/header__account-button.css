@@ -1,0 +1,21 @@
+.header__account-button {
+  background-color: #F9F9F9;
+  border-radius: 20px;
+  border: none;
+  padding: 8px 20px;
+}
+
+.header__account-button:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .header__account-button {
+    visibility: hidden;
+  }
+}
+
+.header__account-button:hover {
+  opacity: 0.8;
+  transition: .3s;
+}

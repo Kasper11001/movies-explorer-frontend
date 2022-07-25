@@ -1,0 +1,12 @@
+.search__visible-checkbox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 36px;
+  height: 20px;
+  background-color: #EBEBEB;
+  border-radius: 20px;
+  background-image: url(../../../images/dot.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: .7s;
+}

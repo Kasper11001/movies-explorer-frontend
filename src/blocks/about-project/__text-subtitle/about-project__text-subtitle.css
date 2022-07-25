@@ -1,0 +1,18 @@
+.about-project__text-subtitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 26px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .about-project__text-subtitle {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+}

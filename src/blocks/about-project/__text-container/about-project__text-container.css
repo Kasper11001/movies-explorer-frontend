@@ -1,0 +1,13 @@
+.about-project__text-container {
+  max-width: 540px;
+}
+
+.about-project__text-container:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .about-project__text-container {
+    margin-bottom: 56px;
+  }
+}

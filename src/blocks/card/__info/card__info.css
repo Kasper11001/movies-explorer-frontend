@@ -1,0 +1,17 @@
+.card__info {
+  padding: 14px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .card__info {
+    padding: 25px 0 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card__info {
+    padding: 16px 0 0;
+  }
+}

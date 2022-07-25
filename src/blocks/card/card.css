@@ -1,0 +1,21 @@
+.card {
+  position: relative;
+  max-width: 360px;
+  margin-bottom: 47px;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 339px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    margin-bottom: 39px;
+  }
+}

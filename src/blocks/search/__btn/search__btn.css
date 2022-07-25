@@ -1,0 +1,9 @@
+.search__btn {
+  padding: 0;
+  border: none;
+  width: 34px;
+  height: 34px;
+  background-image: url(../../../images/button-submit.svg);
+  background-color: #F9F9F9;
+  background-position: center;
+}

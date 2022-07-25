@@ -1,0 +1,11 @@
+@import url(../../../blocks/about-project/about-project.css);
+@import url(../../../blocks/about-project/__text/about-project__text.css);
+@import url(../../../blocks/about-project/__text-container/about-project__text-container.css);
+@import url(../../../blocks/about-project/__text-title/about-project__text-title.css);
+@import url(../../../blocks/about-project/__text-subtitle/about-project__text-subtitle.css);
+@import url(../../../blocks/progress/progress.css);
+@import url(../../../blocks/progress/profile.css);
+@import url(../../../blocks/progress/__text/progress__text.css);
+@import url(../../../blocks/progress/__frontend/progress__frontend.css);
+@import url(../../../blocks/progress/__bar-text/progress__bar-text.css);
+@import url(../../../blocks/progress/__backend/progress__backend.css);

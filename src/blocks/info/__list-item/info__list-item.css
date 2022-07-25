@@ -1,0 +1,8 @@
+.info__list-item {
+  list-style: none;
+  margin-right: 20px;
+}
+
+.info__list-item:last-child {
+  margin-right: 0;
+}

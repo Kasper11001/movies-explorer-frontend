@@ -1,0 +1,18 @@
+.search__item {
+  width: 1px;
+  height: 40px;
+  background-color: #E8E8E8;
+  margin: 0  29px 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .search__item{
+    margin: 0  19px 0 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search__item{
+    display: none;
+  }
+}

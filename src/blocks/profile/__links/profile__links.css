@@ -1,0 +1,20 @@
+.profile__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 174px;
+  list-style: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__links {
+    margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile__links {
+    margin-top: 379px;
+  }
+}
