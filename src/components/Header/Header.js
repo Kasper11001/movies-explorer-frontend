@@ -65,7 +65,7 @@ function Header() {
         <nav className='header__container header__container_position_flex-end'>
           <ul className='header__list'>
               <li className='header__list-item'>
-                <button className='header__button' type="submit"><Link className='header__button-text' to="/signup">Регистрац ия</Link></button>
+                <button className='header__button' type="submit"><Link className='header__button-text' to="/signup">Регистрация</Link></button>
               </li>
               <li className='header__list-item'>
                 <button className='header__button header__button_colored' type="submit"><Link className='header__button-text header__button-text_colored' to="/signin">Войти</Link></button>
