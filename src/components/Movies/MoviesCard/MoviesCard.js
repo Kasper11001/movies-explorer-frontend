@@ -3,7 +3,7 @@ import './MoviesCard.css';
 function MoviesCard({ src, title, duration }) {
   return (
     <div className='card'>
-      <button className='card__delete-icon'></button>
+      <button className='card__delete-icon' type="button"></button>
       <img className='card__image' src={src} alt='обложка фильма' />
       <div className='card__info'>
         <p className='card__title'>{title}</p>

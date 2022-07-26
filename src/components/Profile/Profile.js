@@ -19,7 +19,7 @@ function Profile() {
       <span className="error-profile"></span>
       <ul className="profile__links">
       <li><p className="submit-error"></p></li>
-        <li><button className="profile__link profile__link-button">Редактировать</button></li>
+        <li><button className="profile__link profile__link-button" type="submit">Редактировать</button></li>
         <li><p className="profile__link profile__link_color_red">Выйти из аккаунта</p></li>
       </ul>
       </form>

@@ -21,7 +21,7 @@ function Register() {
           <span className="error">Что-то пошло не так...</span>
       </fieldset>
         <p className="submit-error"></p>
-        <button className="form__button">Зарегистрироваться</button>
+        <button className="form__button" type="submit">Зарегистрироваться</button>
         <p className="form__text">Уже зарегистрированы? <Link to="/signin" className="form__link">Войти</Link></p>
       </form>
     </>

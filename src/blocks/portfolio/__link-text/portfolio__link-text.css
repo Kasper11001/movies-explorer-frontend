@@ -1,5 +1,6 @@
 .portfolio__link-text {
   font-family: "Inter", Arial, sans-serif;
+  margin: 0;
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
@@ -23,9 +24,5 @@
   }
 }
 
-.portfolio__link-text:hover {
-  opacity: 0.8;
-  transition: .3s;
-}
 
 

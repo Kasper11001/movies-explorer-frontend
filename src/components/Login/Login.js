@@ -18,7 +18,7 @@ function Login() {
           <span className="error"></span>
       </fieldset>
         <p className="submit-error"></p>
-        <button className="form__button">Войти</button>
+        <button className="form__button" type="submit">Войти</button>
         <p className="form__text">Ещё не зарегистрированы? <Link to="/signup" className="form__link">Регистрация</Link></p>
       </form>
     </>

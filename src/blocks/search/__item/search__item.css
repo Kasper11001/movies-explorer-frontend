@@ -11,7 +11,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .search__item{
     display: none;
   }

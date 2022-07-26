@@ -11,7 +11,7 @@
   color: #FFFFFF;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
   .promo__title {
     max-width: 300px;
     font-size: 31px;

@@ -1,20 +1,22 @@
 .card-list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 70px 70px 0;
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 1230px) {
   .card-list {
-    flex-direction: column;
+    padding: 80px 200px 177px;
     align-items: center;
   }
 }
 
-@media screen and (max-width: 768px) {
+
+
+@media screen and (max-width: 1130px) {
   .card-list {
+    flex-direction: column;
     padding: 80px 30px 177px;
   }
 }

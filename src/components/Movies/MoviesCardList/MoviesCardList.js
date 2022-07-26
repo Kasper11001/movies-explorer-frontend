@@ -28,7 +28,7 @@ function MoviesCardList() {
         </MoviesCard>
       </section>
       <section className="more card-list__more more_active">
-        <button className="more__button">Ещё</button>
+        <button className="more__button" type="button">Ещё</button>
       </section>
     </>
   );

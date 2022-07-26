@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .search__input-container{
     width: calc(100% - 19px - 19px);
     height: 72px;

@@ -4,6 +4,7 @@
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 9px;
   padding-top: 20px;
+  text-decoration: none;
 }
 
 .portfolio__link:last-child {
