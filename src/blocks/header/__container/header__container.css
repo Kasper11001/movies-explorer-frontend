@@ -1,0 +1,13 @@
+.header__container {
+  display: flex;
+  width: calc(100% - 68px);
+  padding-left: 44px;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container {
+    padding-left: 0;
+  }
+}
+

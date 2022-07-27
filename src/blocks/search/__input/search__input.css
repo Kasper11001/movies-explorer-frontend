@@ -1,0 +1,30 @@
+.search__input {
+  width: calc(100% - 100px);
+  padding: 0 17px;
+  background-color: #F9F9F9;
+  border: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.search__input:focus {
+  outline-color: #EBEBEB;
+}
+
+@media screen and (max-width: 768px) {
+  .search__input{
+    width: calc(100% - 100px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search__input{
+    width: calc(100% - 68px);
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

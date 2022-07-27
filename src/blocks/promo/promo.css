@@ -1,0 +1,12 @@
+.promo {
+  background-color: #5C5C5C;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px;
+}
+
+@media screen and (max-width: 320px) {
+  .promo {
+    padding: 0 0 40px;
+  }
+}

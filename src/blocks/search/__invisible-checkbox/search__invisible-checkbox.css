@@ -1,0 +1,14 @@
+.search__invisible-checkbox {
+  position: absolute;
+  width: 1px; 
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.search__invisible-checkbox:checked + .search__visible-checkbox {
+  transition: .7s;
+  background-image: url(../../../images/circle.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+} 

@@ -1,0 +1,14 @@
+.search__form {
+  display: flex;
+  flex-direction: row;
+  border-radius: 9px;
+  background-color: #F9F9F9;
+  min-height: 72px;
+}
+
+@media screen and (max-width: 450px) {
+  .search__form{
+    flex-direction: column;
+    background-color: #fff;
+  }
+}

@@ -1,0 +1,8 @@
+.card__save-icon_active {
+  background-color: #EE3465;
+  width: 21px;
+  background-image: url(../../../../images/save-icon_active.svg);
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+}

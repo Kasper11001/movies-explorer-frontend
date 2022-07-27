@@ -1,0 +1,13 @@
+.search__pic {
+  background-image: url(../../../images/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (max-width: 320px) {
+  .search__pic{
+    display: none;
+  }
+}

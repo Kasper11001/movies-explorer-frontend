@@ -1,0 +1,28 @@
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 70px 70px 0;
+}
+
+@media screen and (max-width: 1230px) {
+  .card-list {
+    padding: 80px 200px 177px;
+    align-items: center;
+  }
+}
+
+
+
+@media screen and (max-width: 1130px) {
+  .card-list {
+    flex-direction: column;
+    padding: 80px 30px 177px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card-list{
+    padding: 50px 10px 153px;
+  }
+}

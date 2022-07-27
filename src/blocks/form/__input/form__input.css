@@ -1,0 +1,18 @@
+.form__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+.form__input:focus {
+  outline: none;
+}
+
+.form__input[type="password"] {
+  color: #EE3465;
+}

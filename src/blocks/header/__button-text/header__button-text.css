@@ -1,0 +1,15 @@
+.header__button-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media screen and (max-width: 320px) {
+  .header__button-text {
+    font-size: 10px;
+  }
+}
