@@ -110,8 +110,7 @@ class Api {
 }
 // конфиг api
 const apiConfig = {
-  // baseUrl: "https://VasilyVasiliev1.nomoreparties.sbs",
-  baseUrl: "http://localhost:3001",
+  baseUrl: "https://VasilyVasiliev1.nomoreparties.sbs",
   headers: {
     "Content-Type": "application/json",
   },

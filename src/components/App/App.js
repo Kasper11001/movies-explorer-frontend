@@ -47,27 +47,27 @@ function App() {
     };
   });
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('user')) {
-  //     setloggedIn(true);
-  //     setcurrentUser(JSON.parse(localStorage.getItem('user')));
-  //     navigate('/movies', { replace: true });
-  //   } else {
-  //     apiServer
-  //       .getUserInfo()
-  //       .then((userInfo) => {
-  //         if (userInfo) {
-  //           setloggedIn(true);
-  //           setcurrentUser(userInfo.data);
-  //           localStorage.setItem('user', JSON.stringify({name: userInfo.data.name, email: userInfo.data.email}))
-  //           navigate('/movies', { replace: true });
-  //        }
-  //       })
-  //       .catch((err) =>
-  //         console.log(`Ошибка получения данных о пользователе: ${err}`)
-  //       );
-  //     }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      setloggedIn(true);
+      setcurrentUser(JSON.parse(localStorage.getItem('user')));
+      navigate('/movies', { replace: true });
+    } else {
+      apiServer
+        .getUserInfo()
+        .then((userInfo) => {
+          if (userInfo) {
+            setloggedIn(true);
+            setcurrentUser(userInfo.data);
+            localStorage.setItem('user', JSON.stringify({name: userInfo.data.name, email: userInfo.data.email}))
+            navigate('/movies', { replace: true });
+         }
+        })
+        .catch((err) =>
+          console.log(`Ошибка получения данных о пользователе: ${err}`)
+        );
+      }
+  }, []);
 
   useEffect(() => {
     if (isloggedIn === true) {
@@ -98,7 +98,12 @@ function App() {
   }
 
   function onLogin() {
-    setloggedIn(true);
+    apiServer.getUserInfo()
+    .then((user) => {
+      setcurrentUser(user.data);
+      localStorage.setItem('user', JSON.stringify({name: user.data.name, email: user.data.email}))
+      setloggedIn(true);
+    })
   }
 
   function logout() {
@@ -159,7 +164,7 @@ function App() {
     } else {
       api.getMovies()
       .then((movies) => {
-        const result = filterRequest(movies,str,checked)
+        const result = filterRequest(movies, str, checked)
         localStorage.setItem('moviesAll', JSON.stringify(movies));
         localStorage.setItem('movies', JSON.stringify(result));
         setfindResult(result);
@@ -240,11 +245,11 @@ function App() {
         burger={isBurgerClick}
         curtainClose={closeClick}
       />
-      <Header></Header>
+      <Header burger={burgerClick}></Header>
       <Routes>
+        <Route path="*" element={<PageNotFound />}/>
         <Route path="/movies" element={
           <Movies
-            swit={true}
             nothing={findNothing}
             loading={loading}
             searchButton={handlerSearchButton}
@@ -290,7 +295,6 @@ function App() {
           />}
         />
         <Route path="/" element={isloggedIn ? <Main/> : <Navigate to="/signin"/>}/>
-        <Route path="*" element={<PageNotFound />}/>
       </Routes>
       <Footer></Footer>
     </div>
