@@ -1,11 +1,15 @@
+import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
+import { useContext } from 'react';
 import './MoviesCard.css';
 
 function MoviesCard({ card, onSaveCard, saveMovies }) {
 
+  const currentUser = useContext(CurrentUserContext);
+  console.log(card);
   const hour = Math.floor(card.duration/60);
   const minute = (card.duration - hour*60);
   const trailer = card.trailer === undefined ? card.trailerLink : card.trailer;
-  const image = card.trailer === undefined ? `https://api.nomoreparties.co${card.image.url}` : card.image;
+  const image =   card.image.url ? `https://api.nomoreparties.co${card.image.url}` : card.image;
   const delIcon = card.owner === undefined ? false : true;
   const cardIcon = card.owner === undefined ? saveMovies.filter((movie) => movie.movieId === card.id) : [];
 
@@ -19,7 +23,7 @@ function MoviesCard({ card, onSaveCard, saveMovies }) {
         className={`${delIcon ? "card__delete-icon" : "card__save-icon"} ${cardIcon.length > 0 ? "card__save-icon_active" : ""}`}
         onClick={handleSaveClick}
         type="button">
-      {cardIcon.length > 0 ? '' : 'Сохранить'}</button>
+     </button>
       <a href={trailer} target="_blank" rel="noreferrer">
         <img className="card__image" src={image} alt={card.nameRU}/>
       </a>

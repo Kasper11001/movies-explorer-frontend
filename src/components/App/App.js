@@ -317,7 +317,7 @@ function App() {
             onLogin={onLogin}
           />}
         />
-        <Route path="/" element={isloggedIn ? <Main/> : <Navigate to="/signin"/>}/>
+        <Route path="/" element={<Main/>}/>
       </Routes>
       <Footer></Footer>
     </div>
