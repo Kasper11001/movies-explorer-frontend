@@ -1,5 +1,3 @@
-import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
-import { useContext } from 'react';
 import './MoviesCard.css';
 
 function MoviesCard({ card, onSaveCard, saveMovies }) {
