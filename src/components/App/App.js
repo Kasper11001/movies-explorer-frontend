@@ -217,7 +217,6 @@ function App() {
   }
 
   function handleSaveCard(movieTarget) {
-    console.log(movieTarget)
     const statusMovie = 'owner' in movieTarget ? saveMovies.filter((movie) => movie._id === movieTarget._id) : saveMovies.filter((movie) => movie.movieId === movieTarget.id);
     if (statusMovie.length > 0) {
       apiServer.delMovie(statusMovie[0]._id)
