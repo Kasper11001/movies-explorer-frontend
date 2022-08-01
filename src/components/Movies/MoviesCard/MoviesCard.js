@@ -4,8 +4,6 @@ import './MoviesCard.css';
 
 function MoviesCard({ card, onSaveCard, saveMovies }) {
 
-  const currentUser = useContext(CurrentUserContext);
-  console.log(card);
   const hour = Math.floor(card.duration/60);
   const minute = (card.duration - hour*60);
   const trailer = card.trailer === undefined ? card.trailerLink : card.trailer;
