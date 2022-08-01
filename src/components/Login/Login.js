@@ -6,23 +6,22 @@ import { useFormWithValidation } from "../Validation/Validation";
 
 function Login({ onLogin }) {
 
+  const navigate = useNavigate();
   const validation = useFormWithValidation();
   const [text, setText] = useState('');
-  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
     const { password, email } = validation.values;
     apiServer.login(password,email)
-    .then((user) => {
-      onLogin(user);
+    .then((data) => {
+      if(data.message === 'loggedIn') {
+        onLogin();
+      }
     })
-      .then(() => {
-        navigate('/movies', { replace: true });
-      })
-      .catch((err) => {
-        setText(`${err}`);
-      });
+    .catch((err) => {
+      setText(`${err}`);
+    });
   }
 
   return (

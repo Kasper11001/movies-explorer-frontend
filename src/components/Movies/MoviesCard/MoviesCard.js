@@ -9,7 +9,6 @@ function MoviesCard({ card, onSaveCard, saveMovies }) {
   const delIcon = card.owner === undefined ? false : true;
   const cardIcon = card.owner === undefined ? saveMovies.filter((movie) => movie.movieId === card.id) : [];
 
-
   function handleSaveClick() {
     onSaveCard(card)
   }
@@ -20,7 +19,7 @@ function MoviesCard({ card, onSaveCard, saveMovies }) {
         className={`${delIcon ? "card__delete-icon" : "card__save-icon"} ${cardIcon.length > 0 ? "card__save-icon_active" : ""}`}
         onClick={handleSaveClick}
         type="button">
-      {delIcon ? '' : 'Сохранить'}</button>
+      {cardIcon.length > 0 ? '' : 'Сохранить'}</button>
       <a href={trailer} target="_blank" rel="noreferrer">
         <img className="card__image" src={image} alt={card.nameRU}/>
       </a>

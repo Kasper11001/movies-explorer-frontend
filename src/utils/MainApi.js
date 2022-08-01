@@ -62,7 +62,7 @@ class Api {
 
   addMovies(card) {
     const linkTest = /^http/;
-    if (!linkTest.test(card.trailerLink)) card.trailerLink = 'https://api.penoto.nomoredomains.club/not-found';
+    if (!linkTest.test(card.trailerLink)) card.trailerLink = 'https://vasilyvasiliev1.nomoreparties.sbs/not-found';
     if (card.country === null) card.country = 'none';
     if (card.nameEN === null || card.nameEN === "") card.nameEN = 'none';
     if (card.director === null) card.director = 'none';
@@ -77,7 +77,7 @@ class Api {
     } = card;
     const thumbnail = `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`;
     const image = `https://api.nomoreparties.co${card.image.url}`;
-    const trailer = card.trailerLink;
+    const trailerLink = card.trailerLink;
     const movieId = card.id;
     return fetch(`${this.baseUrl}/movies/`, {
       method: "POST",
@@ -93,7 +93,7 @@ class Api {
         nameEN,
         thumbnail,
         image,
-        trailer,
+        trailerLink,
         movieId,
        })
     }).then(this._getResponseData);
@@ -110,7 +110,9 @@ class Api {
 }
 // конфиг api
 const apiConfig = {
-  baseUrl: "https://VasilyVasiliev1.nomoreparties.sbs",
+  // baseUrl: "https://vasilyvasiliev1.nomoreparties.sbs",
+  baseUrl: "http://localhost:3000",
+
   headers: {
     "Content-Type": "application/json",
   },

@@ -5,6 +5,8 @@ function Curtain({ burger, curtainClose }) {
 
   const navigate = useNavigate();
 
+  const setAcive = ({ isActive }) => isActive ? 'curtain__link curtain__link_active' : 'curtain__link';
+
   function handleButtonClickProf() {
     navigate('/profile', { replace: true });
     curtainClose();
@@ -17,8 +19,8 @@ function Curtain({ burger, curtainClose }) {
         <button className="curtain__close" onClick={curtainClose} type="button"></button>
         <div className="curtain__links">
           <Link  to="/" className="curtain__link" onClick={curtainClose}>Главная</Link>
-          <NavLink  to="/movies" className="curtain__link curtain__link_active" onClick={curtainClose}>Фильмы</NavLink>
-          <NavLink  to="/saved-movies" className="curtain__link" onClick={curtainClose}>Сохранённые фильмы</NavLink>
+          <NavLink  to="/movies" className={setAcive} onClick={curtainClose}>Фильмы</NavLink>
+          <NavLink  to="/saved-movies" className={setAcive} onClick={curtainClose}>Сохранённые фильмы</NavLink>
         </div>
         <button className="curtain__button-profile" onClick={handleButtonClickProf} type="button">Аккаунт</button>
       </div>

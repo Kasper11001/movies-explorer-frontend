@@ -98,21 +98,37 @@ function App() {
   }
 
   function onLogin() {
+    setloggedIn(true);
+    navigate('/movies');
+    getCurrentUser();
+  }
+
+  function getCurrentUser() {
     apiServer.getUserInfo()
     .then((user) => {
       setcurrentUser(user.data);
       localStorage.setItem('user', JSON.stringify({name: user.data.name, email: user.data.email}))
-      setloggedIn(true);
     })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   function logout() {
     apiServer.logout()
     .then(() => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('movies');
+      localStorage.removeItem('moviesAll');
+      localStorage.removeItem('moviesSave');
       setfindResult([]);
       setSaveMovies([]);
       setloggedIn(false);
-      navigate('/', { replace: true });
+      setcurrentUser({
+        name: "",
+        email: "",
+      });
+      navigate('/signin', { replace: true });
       })
     .catch((err) =>
       console.log(`Ошибка: ${err}`)
@@ -201,6 +217,7 @@ function App() {
   }
 
   function handleSaveCard(movieTarget) {
+    console.log(movieTarget)
     const statusMovie = 'owner' in movieTarget ? saveMovies.filter((movie) => movie._id === movieTarget._id) : saveMovies.filter((movie) => movie.movieId === movieTarget.id);
     if (statusMovie.length > 0) {
       apiServer.delMovie(statusMovie[0]._id)
@@ -249,40 +266,46 @@ function App() {
       <Routes>
         <Route path="*" element={<PageNotFound />}/>
         <Route path="/movies" element={
-          <Movies
-            nothing={findNothing}
-            loading={loading}
-            searchButton={handlerSearchButton}
-            checkbox={toggleChangeMovies}
-            movies={findResult}
-            saveMovies={saveMovies}
-            cardsView ={quantityCards}
-            more={handlerMoreButton}
-            loggedIn={isloggedIn}
-            onSaveCard={handleSaveCard}
-            burger={burgerClick}
-      />}
+          isloggedIn ?
+            <Movies
+              nothing={findNothing}
+              loading={loading}
+              searchButton={handlerSearchButton}
+              checkbox={toggleChangeMovies}
+              movies={findResult}
+              saveMovies={saveMovies}
+              cardsView ={quantityCards}
+              more={handlerMoreButton}
+              loggedIn={isloggedIn}
+              onSaveCard={handleSaveCard}
+              burger={burgerClick}
+            /> : <Navigate to='/signin'/>
+        }
         />
         <Route path="/saved-movies" element={
-          <SavedMovies
-            nothing={findNothing}
-            loading={loading}
-            searchButton={handlerSearchButtonSaveMovies}
-            checkbox={toggleChangeMoviesSave}
-            saveMovies={saveMovies}
-            cardsView ={quantityCards}
-            more={handlerMoreButton}
-            loggedIn={isloggedIn}
-            onSaveCard={handleSaveCard}
-            burger={burgerClick}
-      />}
+          isloggedIn ?
+            <SavedMovies
+              nothing={findNothing}
+              loading={loading}
+              searchButton={handlerSearchButtonSaveMovies}
+              checkbox={toggleChangeMoviesSave}
+              saveMovies={saveMovies}
+              cardsView ={quantityCards}
+              more={handlerMoreButton}
+              loggedIn={isloggedIn}
+              onSaveCard={handleSaveCard}
+              burger={burgerClick}
+            /> : <Navigate to='/signin'/>
+        }
         />
         <Route path="/profile" element={
-          <Profile
-            profileEdit={profileEdit}
-            logout={logout}
-            burger={burgerClick}
-          />}
+          isloggedIn ?
+            <Profile
+              profileEdit={profileEdit}
+              logout={logout}
+              burger={burgerClick}
+            /> : <Navigate to='/signin'/>
+          }
         />
         <Route path="/signup" element={
           <Register
