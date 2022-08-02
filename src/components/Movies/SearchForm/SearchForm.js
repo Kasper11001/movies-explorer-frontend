@@ -6,7 +6,8 @@ function SearchForm({ searchButton, checkbox }) {
   const [textSearch, settextSearch] = useState('');
   const [check, setcheck] = useState(false);
 
-  function handleClickButton() {
+  function handleClickButton(evt) {
+    evt.preventDefault();
     searchButton(textSearch);
   }
 

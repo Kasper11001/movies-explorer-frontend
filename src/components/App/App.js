@@ -53,20 +53,9 @@ function App() {
       setcurrentUser(JSON.parse(localStorage.getItem('user')));
       navigate('/movies', { replace: true });
     } else {
-      apiServer
-        .getUserInfo()
-        .then((userInfo) => {
-          if (userInfo) {
-            setloggedIn(true);
-            setcurrentUser(userInfo.data);
-            localStorage.setItem('user', JSON.stringify({name: userInfo.data.name, email: userInfo.data.email}))
-            navigate('/movies', { replace: true });
-         }
-        })
-        .catch((err) =>
-          console.log(`Ошибка получения данных о пользователе: ${err}`)
-        );
-      }
+      getCurrentUser();
+      navigate('/movies', { replace: true });
+    }
   }, []);
 
   useEffect(() => {
@@ -110,7 +99,7 @@ function App() {
       localStorage.setItem('user', JSON.stringify({name: user.data.name, email: user.data.email}))
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`Ошибка получения данных о пользователе: ${err}`);
     });
   }
 
@@ -185,6 +174,8 @@ function App() {
         localStorage.setItem('movies', JSON.stringify(result));
         setfindResult(result);
         updateViewCards();
+        console.log(result);
+        console.log('5');
         if (result.length === 0) {
           setFindNothing(true);
         }
@@ -286,7 +277,7 @@ function App() {
             <SavedMovies
               nothing={findNothing}
               loading={loading}
-              searchButton={handlerSearchButtonSaveMovies}
+              // searchButton={handlerSearchButtonSaveMovies}
               checkbox={toggleChangeMoviesSave}
               saveMovies={saveMovies}
               cardsView ={quantityCards}
