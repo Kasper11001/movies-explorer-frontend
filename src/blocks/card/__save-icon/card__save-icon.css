@@ -16,3 +16,7 @@
   border: none;
   cursor: pointer;
 }
+
+.card__save-icon::after {
+  content: 'Сохранить';
+}

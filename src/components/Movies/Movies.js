@@ -1,12 +1,23 @@
 import './Movies.css';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SearchForm from './SearchForm/SearchForm';
+import Preloader from './Preloader/Preloader';
 
-function Movies() {
+function Movies({ saveMovies, onSaveCard, more, cardsView, movies, nothing, loading, checkbox, searchButton }) {
   return (
     <div>
-      <SearchForm></SearchForm>
-      <MoviesCardList></MoviesCardList>
+      <SearchForm
+        checkbox={checkbox}
+        searchButton={searchButton}
+      />
+      <Preloader nothing={nothing} loading={loading}/>
+      <MoviesCardList
+        saveMovies={saveMovies}
+        onSaveCard={onSaveCard}
+        more={more}
+        cardsView={cardsView}
+        cards={movies}
+      />
     </div>
   );
 }
