@@ -3,12 +3,17 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useContext, useState } from "react";
 import { useFormWithValidation } from "../Validation/Validation";
 import apiServer from "../../utils/MainApi";
+import Header from '../Header/Header';
 
-function Profile({ logout, profileEdit }) {
+function Profile({ logout, profileEdit, burger, loggedIn }) {
 
   const currentUser = useContext(CurrentUserContext);
   const validation = useFormWithValidation(currentUser);
   const [text, setText] = useState('');
+
+  function setTextTimeout() {
+    setText('');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +23,8 @@ function Profile({ logout, profileEdit }) {
       .then(() => {
         profileEdit(name,email);
         validation.resetForm();
+        setText('Успешно');
+        setTimeout(setTextTimeout, 2000);
       })
       .catch((err) => {
         setText(`${err}`);
@@ -27,6 +34,7 @@ function Profile({ logout, profileEdit }) {
 
   return (
     <>
+    <Header loggedIn={loggedIn} burger={burger}/>
     <main className="profile">
       <form onSubmit={handleSubmit} noValidate>
       <h1 className="profile__title">Привет, {currentUser.name}!</h1>

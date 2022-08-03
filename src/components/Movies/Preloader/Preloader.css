@@ -110,3 +110,10 @@
   background: #2BE080;
   animation: preloader-inside-red 1s ease-in-out infinite;
 }
+
+@media screen and (max-width: 320px) {
+  .nothing {
+    padding: 20px 0;
+    max-width: 320px;
+  }
+}
