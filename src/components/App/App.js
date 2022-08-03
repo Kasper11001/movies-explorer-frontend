@@ -46,14 +46,14 @@ function App() {
     };
   });
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('user')) {
-  //     setloggedIn(true);
-  //     setcurrentUser(JSON.parse(localStorage.getItem('user')));
-  //   } else {
-  //     getCurrentUser();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      setloggedIn(true);
+      setcurrentUser(JSON.parse(localStorage.getItem('user')));
+    } else {
+      getCurrentUser();
+    }
+  }, []);
 
   useEffect(() => {
     if (isloggedIn === true) {
