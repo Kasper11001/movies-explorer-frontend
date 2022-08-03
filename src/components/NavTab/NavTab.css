@@ -3,6 +3,7 @@
 @import url(../../blocks/header-menu/__nav/header-menu__nav.css);
 @import url(../../blocks/header-menu/__nav/_not-landing/header-menu__nav_not-landing.css);
 @import url(../../blocks/header-menu/__link/header-menu__link.css);
+@import url(../../blocks/header-menu/__link-black/_active/header-menu__link-black_active.css);
 @import url(../../blocks/header-menu/__button-enter/header-menu__button-enter.css);
 @import url(../../blocks/header-menu/__link-black/header-menu__link-black.css);
 @import url(../../blocks/header-menu/__button-profile/header-menu__button-profile.css);

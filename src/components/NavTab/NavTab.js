@@ -1,5 +1,5 @@
 import "./NavTab.css";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 function NavTab({
   loggedIn,
@@ -20,18 +20,20 @@ function NavTab({
     burger();
   }
 
+  const setAcive = ({ isActive }) => isActive ? 'header-menu__link-black header-menu__link-black_active' : 'header-menu__link-black';
+
   return (
     <div className="header-menu">
       <Link className="form__logo-link" to="/"><div className="header-menu__logo"></div></Link>
       {loggedIn ? (
         <nav className="header-menu__nav header-menu__nav_not-landing">
           <div className="header-menu__links">
-            <Link to="/movies" className="header-menu__link-black">
+            <NavLink to="/movies" className={setAcive} >
               Фильмы
-            </Link>
-            <Link to="/saved-movies" className="header-menu__link-black">
+            </NavLink>
+            <NavLink to="/saved-movies" className={setAcive} >
               Сохранённые фильмы
-            </Link>
+            </NavLink>
           </div>
           <button
             className="header-menu__button-profile"
