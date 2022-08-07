@@ -1,6 +1,5 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-import React, { useEffect } from "react";
 
 function MoviesCardList({
   cards,

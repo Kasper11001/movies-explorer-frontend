@@ -259,22 +259,10 @@ function App() {
     setInputStatus(false);
   }
 
-  function getSavedMovies() {
-    const savedMovies = JSON.parse(localStorage.getItem('moviesSave'));
-    return savedMovies;
-  }
-
-  function getMovies() {
-    const movies = JSON.parse(localStorage.getItem('movies'));
-    return movies;
-  }
-
   function getUser() {
     const user = JSON.parse(localStorage.getItem('user'));
     return user;
   }
-
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
