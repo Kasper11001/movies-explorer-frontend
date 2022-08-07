@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './MoviesCard.css';
 
 function MoviesCard({ card, onSaveCard, saveMovies }) {
@@ -6,17 +7,21 @@ function MoviesCard({ card, onSaveCard, saveMovies }) {
   const minute = (card.duration - hour*60);
   const trailer = card.trailer === undefined ? card.trailerLink : card.trailer;
   const image =   card.image.url ? `https://api.nomoreparties.co${card.image.url}` : card.image;
-  const delIcon = card.owner === undefined ? false : true;
+  const owner = card.owner ? true : false;
   const cardIcon = card.owner === undefined ? saveMovies.filter((movie) => movie.movieId === card.id) : [];
 
   function handleSaveClick() {
     onSaveCard(card)
   }
 
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <div className='card'>
       <button
-        className={`${delIcon ? "card__delete-icon" : "card__save-icon"} ${cardIcon.length > 0 ? "card__save-icon_active" : ""}`}
+        className={`${owner ? "card__delete-icon" : "card__save-icon"} ${cardIcon.length > 0 ? "card__save-icon_active" : ""}`}
         onClick={handleSaveClick}
         type="button">
      </button>

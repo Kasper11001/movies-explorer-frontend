@@ -1,29 +1,35 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-import React from "react";
+import React, { useEffect } from "react";
 
-function MoviesCardList({ cards, cardsView, onSaveCard, saveMovies, more }) {
+function MoviesCardList({
+  cards,
+  cardsView,
+  onSaveCard,
+  saveMovies,
+  more
+}) {
 
   let cardsNew = [];
   let tempArray = [];
 
-    for (let index = 0; index < cardsView; index++) {
-      if (cards[index] !== undefined) {
-        tempArray.push(cards[index]);
-      }
+  for (let index = 0; index < cardsView; index++) {
+    if (cards[index] !== undefined) {
+      tempArray.push(cards[index]);
     }
-    cardsNew = tempArray;
+  }
+  cardsNew = tempArray;
 
   return (
     <>
       <section className='card-list'>
-        {cardsNew.map((data, i) => (
-        <MoviesCard
-          key={data.id === undefined ? data._id : data.id}
-          card={data}
-          onSaveCard={onSaveCard}
-          saveMovies={saveMovies}
-        />
+        {cardsNew.map((card, i) => (
+          <MoviesCard
+            key={card.id === undefined ? card._id : card.id}
+            card={card}
+            onSaveCard={onSaveCard}
+            saveMovies={saveMovies}
+          />
         ))}
       </section>
       <section className={`more ${cards.length > cardsView ? 'more_active' : ''}`}>

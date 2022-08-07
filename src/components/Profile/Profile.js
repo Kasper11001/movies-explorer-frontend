@@ -50,7 +50,8 @@ function Profile({ logout, profileEdit, burger, loggedIn }) {
       <span className="error-profile">{validation.errors.email}</span>
       <ul className="profile__links">
       <li><p className="submit-error">{text}</p></li>
-        <li><button className="profile__link profile__link-button" disabled={!validation.isValid}>Редактировать</button></li>
+        <li><button className={validation.isValid ? 'profile__link profile__link-button' : 'profile__link profile__link_disabled profile__link-button'} disabled={!validation.isValid}>Редактировать</button></li>
+
         <li><p className="profile__link profile__link_color_red" onClick={logout}>Выйти из аккаунта</p></li>
       </ul>
       </form>

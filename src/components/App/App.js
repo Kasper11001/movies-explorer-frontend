@@ -20,24 +20,38 @@ function App() {
 
   const [isBurgerClick, setBurgerClick] = useState(false);
   const [quantityCards, setQuantityCards] = useState(0);
-  const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [findNothing, setFindNothing] = useState(false);
   const [isloggedIn, setloggedIn] = useState(false);
   const [findResult, setfindResult] = useState([]);
   const [saveMovies, setSaveMovies] = useState([]);
+  const [inputStatus, setInputStatus] = useState(false);
+  const [checked, setChecked] = useState(false);
+
   const [currentUser, setcurrentUser] = useState({
     name: "",
     email: "",
   });
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem('movies')) {
+      setChecked(getCheckBoxStatus);
       setfindResult(JSON.parse(localStorage.getItem('movies')));
-      updateViewCards();
     }
+    updateViewCards();
   }, []);
+
+  useEffect(() => {
+    if (isloggedIn === true) {
+      api.getMovies()
+        .then((movies) => {
+          localStorage.setItem('moviesAll', JSON.stringify(movies));
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [isloggedIn]);
 
   useEffect(() => {
     window.addEventListener("resize", updateViewCards);
@@ -49,10 +63,11 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setloggedIn(true);
-      setcurrentUser(JSON.parse(localStorage.getItem('user')));
+      setcurrentUser(getUser);
     } else {
       getCurrentUser();
     }
+    navigate("/movies");
   }, []);
 
   useEffect(() => {
@@ -68,6 +83,24 @@ function App() {
         });
     }
   }, [isloggedIn]);
+
+  function getSavedMovies() {
+    if (localStorage.getItem('moviesSave')) {
+      apiServer.getMovies()
+        .then((movies) => {
+          setSaveMovies(movies.data);
+          updateViewCards();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  function getCheckBoxStatus() {
+    const checkbosStatus = JSON.parse(localStorage.getItem('checkboxStatus'));
+    return checkbosStatus;
+  }
 
   function updateViewCards() {
     if (window.innerWidth > 1279) setQuantityCards(12);
@@ -92,6 +125,7 @@ function App() {
   function getCurrentUser() {
     apiServer.getUserInfo()
       .then((user) => {
+        setloggedIn(true);
         setcurrentUser(user.data);
         localStorage.setItem('user', JSON.stringify({ name: user.data.name, email: user.data.email }))
       })
@@ -107,6 +141,7 @@ function App() {
         localStorage.removeItem('movies');
         localStorage.removeItem('moviesAll');
         localStorage.removeItem('moviesSave');
+        localStorage.removeItem('checkboxStatus');
         setfindResult([]);
         setSaveMovies([]);
         setloggedIn(false);
@@ -114,91 +149,65 @@ function App() {
           name: "",
           email: "",
         });
-        navigate('/signin', { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((err) =>
         console.log(`Ошибка: ${err}`)
       );
   }
 
-  function toggleChangeMovies(status) {
-    setChecked(status);
+  function toggleChangeMovies(checked) {
+    disableInput();
     setFindNothing(false);
     setLoading(true);
-    if (localStorage.getItem('moviesAll') && localStorage.getItem('movies')) {
-      const result = filterRequest(JSON.parse(localStorage.getItem('movies')), '', status)
+    if (localStorage.getItem('movies')) {
+      const result = filterRequest(JSON.parse(localStorage.getItem('movies')), '', checked)
       setfindResult(result);
-      updateViewCards();
-      if (result.length === 0) {
-        setFindNothing(true);
-      }
-      setLoading(false);
     }
-  }
-
-  function toggleChangeMoviesSave(status) {
-    setChecked(status);
-    setFindNothing(false);
-    setLoading(true);
     if (localStorage.getItem('moviesSave')) {
-      const result = filterRequest(JSON.parse(localStorage.getItem('moviesSave')), '', status)
+      const result = filterRequest(JSON.parse(localStorage.getItem('moviesSave')), '', checked)
       setSaveMovies(result);
-      updateViewCards();
-      if (result.length === 0) {
-        setFindNothing(true);
-      }
-      setLoading(false);
     }
+    setLoading(false);
+    updateViewCards();
+    enableInput();
   }
 
   function handlerSearchButton(str) {
+    disableInput();
     setFindNothing(false);
     setLoading(true);
-    if (localStorage.getItem('moviesAll')) {
-      const result = filterRequest(JSON.parse(localStorage.getItem('moviesAll')), str, checked)
-      localStorage.setItem('movies', JSON.stringify(result));
-      setfindResult(result);
-      updateViewCards();
-      if (result.length === 0) {
-        setFindNothing(true);
-      }
-      setLoading(false);
-    } else {
-      api.getMovies()
-        .then((movies) => {
-          const result = filterRequest(movies, str, checked)
-          localStorage.setItem('moviesAll', JSON.stringify(movies));
-          localStorage.setItem('movies', JSON.stringify(result));
-          setfindResult(result);
-          updateViewCards();
-          if (result.length === 0) {
-            setFindNothing(true);
-          }
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setLoading(false);
-        });
+    const result = filterRequest(JSON.parse(localStorage.getItem('moviesAll')), str, checked)
+    localStorage.setItem('movies', JSON.stringify(result));
+    localStorage.setItem('checkboxStatus', JSON.stringify(checked));
+    setfindResult(result);
+    updateViewCards();
+    if (result.length === 0) {
+      setFindNothing(true);
     }
+    setLoading(false);
+    enableInput();
   }
 
   function handlerSearchButtonSaveMovies(str) {
+    disableInput();
     setFindNothing(false);
     setLoading(true);
     apiServer.getMovies()
       .then((movies) => {
         const result = filterRequest(movies.data, str, checked)
-        setSaveMovies(result);
+        setSaveMovies(result)
         updateViewCards();
         if (result.length === 0) {
           setFindNothing(true);
         }
         setLoading(false);
+        enableInput();
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enableInput();
       });
   }
 
@@ -224,6 +233,7 @@ function App() {
         });
     }
   }
+
   function handlerMoreButton() {
     let number = 0
     if (window.innerWidth > 1279) number = 4;
@@ -235,10 +245,36 @@ function App() {
       setQuantityCards(quantityCards + number);
     }
   }
+
   function profileEdit(name, email) {
     localStorage.setItem('user', JSON.stringify({ name, email }))
     setcurrentUser({ name, email });
   }
+
+  function disableInput() {
+    setInputStatus(true);
+  }
+
+  function enableInput() {
+    setInputStatus(false);
+  }
+
+  function getSavedMovies() {
+    const savedMovies = JSON.parse(localStorage.getItem('moviesSave'));
+    return savedMovies;
+  }
+
+  function getMovies() {
+    const movies = JSON.parse(localStorage.getItem('movies'));
+    return movies;
+  }
+
+  function getUser() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user;
+  }
+
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -263,10 +299,13 @@ function App() {
           <Route path="/movies" element={
             isloggedIn ?
               <Movies
+                toggleChangeMovies={toggleChangeMovies}
+                setChecked={setChecked}
+                checked={checked}
+                inputStatus={inputStatus}
                 nothing={findNothing}
                 loading={loading}
                 searchButton={handlerSearchButton}
-                checkbox={toggleChangeMovies}
                 movies={findResult}
                 saveMovies={saveMovies}
                 cardsView={quantityCards}
@@ -274,23 +313,27 @@ function App() {
                 loggedIn={isloggedIn}
                 onSaveCard={handleSaveCard}
                 burger={burgerClick}
-              /> : <Navigate to='/signin' />
+              /> : <Navigate to='/' />
           }
           />
           <Route path="/saved-movies" element={
             isloggedIn ?
               <SavedMovies
+                setChecked={setChecked}
+                checked={checked}
+                toggleChangeMovies={toggleChangeMovies}
+                getSavedMovies={getSavedMovies}
+                searchButton={handlerSearchButtonSaveMovies}
+                inputStatus={inputStatus}
                 nothing={findNothing}
                 loading={loading}
-                searchButton={handlerSearchButtonSaveMovies}
-                checkbox={toggleChangeMoviesSave}
                 saveMovies={saveMovies}
                 cardsView={quantityCards}
                 more={handlerMoreButton}
                 loggedIn={isloggedIn}
                 onSaveCard={handleSaveCard}
                 burger={burgerClick}
-              /> : <Navigate to='/signin' />
+              /> : <Navigate to='/' />
           }
           />
           <Route path="/profile" element={
@@ -300,7 +343,7 @@ function App() {
                 profileEdit={profileEdit}
                 logout={logout}
                 burger={burgerClick}
-              /> : <Navigate to='/signin' />
+              /> : <Navigate to='/' />
           }
           />
         </Routes>

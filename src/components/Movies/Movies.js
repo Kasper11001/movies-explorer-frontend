@@ -4,18 +4,40 @@ import SearchForm from './SearchForm/SearchForm';
 import Preloader from './Preloader/Preloader';
 import Header from '../Header/Header';
 
-function Movies({ saveMovies, onSaveCard, more, cardsView, movies, nothing, loading, checkbox, searchButton, burger, loggedIn }) {
+function Movies({
+  toggleChangeMovies,
+  inputStatus,
+  saveMovies,
+  onSaveCard,
+  more,
+  cardsView,
+  movies,
+  nothing,
+  loading,
+  searchButton,
+  burger,
+  loggedIn,
+  checked,
+  setChecked
+}) {
+
   return (
     <div>
       <Header
         burger={burger}
         loggedIn={loggedIn}
-        />
+      />
       <SearchForm
-        checkbox={checkbox}
+        toggleChangeMovies={toggleChangeMovies}
+        setChecked={setChecked}
+        checked={checked}
+        inputStatus={inputStatus}
         searchButton={searchButton}
       />
-      <Preloader nothing={nothing} loading={loading}/>
+      <Preloader
+        nothing={nothing}
+        loading={loading}
+      />
       <MoviesCardList
         saveMovies={saveMovies}
         onSaveCard={onSaveCard}
