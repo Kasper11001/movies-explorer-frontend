@@ -4,7 +4,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useState, useEffect } from "react";
 import api from "../../utils/MoviesApi";
 import apiServer from "../../utils/MainApi";
-import { useLocation } from 'react-router-dom';
 
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
@@ -27,11 +26,10 @@ function App() {
     name: "",
     email: "",
   });
-  let location = useLocation();
-  const navigate = useNavigate();
-  useEffect(() => {
-    console.log(location.pathname)
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
     if (localStorage.getItem('user')) {
       setcurrentUser(getUser);
       setloggedIn(true);
@@ -105,6 +103,7 @@ function App() {
       .then((user) => {
         localStorage.setItem('user', JSON.stringify({ name: user.data.name, email: user.data.email }))
         setcurrentUser(user.data);
+        setloggedIn(true);
       })
       .catch((err) => {
         console.log(`Ошибка получения данных о пользователе: ${err}`);
