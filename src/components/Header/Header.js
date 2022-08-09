@@ -3,17 +3,17 @@ import NavTab from '../NavTab/NavTab'
 import './Header.css';
 
 
-function Header({ burger, loggedIn, isLanding }) {
+function Header({ burger, isloggedIn, isLanding }) {
 
   return (
     <>
       {isLanding ? (
         <header className='header header_landing'>
-          <NavTab loggedIn={loggedIn} burger={burger} />
+          <NavTab isloggedIn={isloggedIn} burger={burger} />
         </header>
       ):(
         <header className='header'>
-          <NavTab loggedIn={loggedIn} burger={burger} />
+          <NavTab isloggedIn={isloggedIn} burger={burger} />
         </header>
       )}
 

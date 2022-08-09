@@ -1,5 +1,6 @@
 import "./PageNotFound.css";
 import {Link} from "react-router-dom";
+
 function PageNotFound() {
   return (
     <div className="not-found">

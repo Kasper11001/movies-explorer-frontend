@@ -3,16 +3,17 @@ import './MoviesCardList.css';
 
 function MoviesCardList({
   cards,
-  cardsView,
+  quantityCards,
   onSaveCard,
   saveMovies,
-  more
+  handlerMoreButton,
+
 }) {
 
   let cardsNew = [];
   let tempArray = [];
 
-  for (let index = 0; index < cardsView; index++) {
+  for (let index = 0; index < quantityCards; index++) {
     if (cards[index] !== undefined) {
       tempArray.push(cards[index]);
     }
@@ -31,8 +32,8 @@ function MoviesCardList({
           />
         ))}
       </section>
-      <section className={`more ${cards.length > cardsView ? 'more_active' : ''}`}>
-        <button className="more__button" onClick={more}>Ещё</button>
+      <section className={`more ${cards.length > quantityCards ? 'more_active' : ''}`}>
+        <button className="more__button" onClick={handlerMoreButton}>Ещё</button>
       </section>
     </>
   );

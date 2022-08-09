@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './MoviesCard.css';
 
 function MoviesCard({ card, onSaveCard, saveMovies }) {
@@ -13,10 +12,6 @@ function MoviesCard({ card, onSaveCard, saveMovies }) {
   function handleSaveClick() {
     onSaveCard(card)
   }
-
-  useEffect(() => {
-    
-  }, [])
 
   return (
     <div className='card'>

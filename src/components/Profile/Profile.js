@@ -5,7 +5,7 @@ import { useFormWithValidation } from "../Validation/Validation";
 import apiServer from "../../utils/MainApi";
 import Header from '../Header/Header';
 
-function Profile({ logout, profileEdit, burger, loggedIn }) {
+function Profile({ logout, profileEdit, burger, isloggedIn }) {
 
   const currentUser = useContext(CurrentUserContext);
   const validation = useFormWithValidation(currentUser);
@@ -34,7 +34,7 @@ function Profile({ logout, profileEdit, burger, loggedIn }) {
 
   return (
     <>
-    <Header loggedIn={loggedIn} burger={burger}/>
+    <Header isloggedIn={isloggedIn} burger={burger}/>
     <main className="profile">
       <form onSubmit={handleSubmit} noValidate>
       <h1 className="profile__title">Привет, {currentUser.name}!</h1>

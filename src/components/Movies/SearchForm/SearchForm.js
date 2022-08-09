@@ -1,15 +1,14 @@
 import './SearchForm.css';
-import { useState } from "react";
 
 function SearchForm({
   searchButton,
   inputStatus,
   checked,
   setChecked,
-  toggleChangeMovies
+  toggleChangeMovies,
+  textSearch,
+  settextSearch
 }) {
-
-  const [textSearch, settextSearch] = useState('');
 
   function handleClickButton(evt) {
     evt.preventDefault();

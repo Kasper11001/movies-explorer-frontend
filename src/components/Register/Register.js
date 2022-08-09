@@ -8,6 +8,7 @@ function Register({ onLogin }) {
   const validation = useFormWithValidation();
   const navigate = useNavigate();
   const [text, setText] = useState('');
+  
   function handleSubmit(e) {
     e.preventDefault();
     const { name, password, email } = validation.values;

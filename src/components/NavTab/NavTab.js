@@ -2,7 +2,7 @@ import "./NavTab.css";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
 function NavTab({
-  loggedIn,
+  isloggedIn,
   burger
 }) {
 
@@ -25,7 +25,7 @@ function NavTab({
   return (
     <div className="header-menu">
       <Link className="form__logo-link" to="/"><div className="header-menu__logo"></div></Link>
-      {loggedIn ? (
+      {isloggedIn ? (
         <nav className="header-menu__nav header-menu__nav_not-landing">
           <div className="header-menu__links">
             <NavLink to="/movies" className={setAcive} >

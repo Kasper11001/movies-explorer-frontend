@@ -1,7 +1,7 @@
 import React from 'react'
 import './Preloader.css'
 
-function Preloader({ loading, nothing }) {
+function Preloader({ loading, findNothing }) {
   return (
     <>
       <div className={`preloader ${loading ? 'preloader_active':''}`}>
@@ -9,7 +9,7 @@ function Preloader({ loading, nothing }) {
           <span className="preloader__round"></span>
         </div>
       </div>
-      <p className={`nothing ${nothing ? 'nothing_active':''}`}>Ничего не найдено</p>
+      <p className={`nothing ${findNothing ? 'nothing_active':''}`}>Ничего не найдено</p>
     </>
   )
 };
