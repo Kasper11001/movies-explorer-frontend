@@ -17,7 +17,6 @@ export function useFormWithValidation(currentUser) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    console.log(value)
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: target.validationMessage });
 

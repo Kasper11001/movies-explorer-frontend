@@ -27,7 +27,6 @@ function App() {
     name: "",
     email: "",
   });
-console.log(isloggedIn)
   let location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
