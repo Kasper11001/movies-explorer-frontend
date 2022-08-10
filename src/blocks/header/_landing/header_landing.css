@@ -1,0 +1,9 @@
+.header_landing {
+  background-color: #5C5C5C;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 0 14px 0;
+  }
+}

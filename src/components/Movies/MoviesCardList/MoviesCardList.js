@@ -1,34 +1,39 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-import img1 from '../../../images/card-image1.png'
-import img2 from '../../../images/card-image2.png'
-import img3 from '../../../images/card-image3.png'
 
-function MoviesCardList() {
+function MoviesCardList({
+  cards,
+  quantityCards,
+  onSaveCard,
+  saveMovies,
+  handlerMoreButton,
+
+}) {
+
+  let cardsNew = [];
+  let tempArray = [];
+
+  for (let index = 0; index < quantityCards; index++) {
+    if (cards[index] !== undefined) {
+      tempArray.push(cards[index]);
+    }
+  }
+  cardsNew = tempArray;
+
   return (
     <>
       <section className='card-list'>
-        <MoviesCard
-          src={img1}
-          title={'33 слова о дизайне'}
-          duration={'1ч 17м'}
-        >
-        </MoviesCard>
-        <MoviesCard
-          src={img2}
-          title={'Киноальманах «100 лет дизайна»'}
-          duration={'1ч 17м'}
-        >
-        </MoviesCard>
-        <MoviesCard
-          src={img3}
-          title={'В погоне за Бенкси'}
-          duration={'1ч 17м'}
-        >
-        </MoviesCard>
+        {cardsNew.map((card, i) => (
+          <MoviesCard
+            key={card.id === undefined ? card._id : card.id}
+            card={card}
+            onSaveCard={onSaveCard}
+            saveMovies={saveMovies}
+          />
+        ))}
       </section>
-      <section className="more card-list__more more_active">
-        <button className="more__button" type="button">Ещё</button>
+      <section className={`more ${cards.length > quantityCards ? 'more_active' : ''}`}>
+        <button className="more__button" onClick={handlerMoreButton}>Ещё</button>
       </section>
     </>
   );

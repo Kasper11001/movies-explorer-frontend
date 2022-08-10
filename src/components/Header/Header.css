@@ -1,18 +1,5 @@
 @import url(../../blocks/header/header.css);
-@import url(../../blocks/header/_color_grey/header_color_grey.css);
-@import url(../../blocks/logo/logo.css);
-@import url(../../blocks/header/__list/header__list.css);
-@import url(../../blocks/header/__list-item/header__list-item.css);
-@import url(../../blocks/header/__button/header__button.css);
-@import url(../../blocks/header/__button/_colored/header__button_colored.css);
-@import url(../../blocks/header/__button-text/header__button-text.css);
-@import url(../../blocks/header/__button-text/_colored/header__button-text_colored.css);
-@import url(../../blocks/header/__container/header__container.css);
-@import url(../../blocks/header/__container/_position/header__container_position_flex-end.css);
-@import url(../../blocks/header/__container/_position/header__container_position_space-between.css);
-@import url(../../blocks/header/__link/header__link.css);
-@import url(../../blocks/header/__link-item/header__link-item.css);
-@import url(../../blocks/header/__link/_active/header__link_active.css);
-@import url(../../blocks/header/__account-button/header__account-button.css);
-@import url(../../blocks/header/__account-button-text/header__account-button-text.css);
-@import url(../../blocks/header/__burger/header__burger.css);
+@import url(../../blocks/header/_landing/header_landing.css);
+
+
+

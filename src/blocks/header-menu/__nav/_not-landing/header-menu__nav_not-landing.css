@@ -1,0 +1,4 @@
+.header-menu__nav_not-landing {
+  justify-content: space-between;
+  width: calc(100% - 38px);
+}
