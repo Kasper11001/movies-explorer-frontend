@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useState, useEffect } from "react";
 import api from "../../utils/MoviesApi";
@@ -26,13 +26,14 @@ function App() {
     name: "",
     email: "",
   });
-
-  const navigate = useNavigate();
+  let location = useLocation();
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setcurrentUser(getUser);
       setloggedIn(true);
+      navigate(location.pathname);
       getSavedMovies();
       if (localStorage.getItem('moviesAll')) {
         setfindResult(JSON.parse(localStorage.getItem('movies')));
@@ -48,7 +49,7 @@ function App() {
     } else {
       getCurrentUser();
     }
-  }, [isloggedIn]);
+  }, [isloggedIn, location.pathname, navigate]);
 
   useEffect(() => {
     window.addEventListener("resize", updateViewCards);
