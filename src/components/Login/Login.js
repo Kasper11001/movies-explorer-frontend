@@ -1,12 +1,10 @@
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import apiServer from "../../utils/MainApi";
 import { useFormWithValidation } from "../Validation/Validation";
 
 function Login({ onLogin }) {
-
-  let navigate = useNavigate();
 
   const validation = useFormWithValidation();
   const [text, setText] = useState('');
