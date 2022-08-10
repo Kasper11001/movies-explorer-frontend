@@ -31,12 +31,13 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
+      navigate('/movies');
       setcurrentUser(getUser);
       setloggedIn(true);
-      navigate(location.pathname);
       getSavedMovies();
       if (localStorage.getItem('moviesAll')) {
         setfindResult(JSON.parse(localStorage.getItem('movies')));
+        navigate(location.pathname);
       } else {
         api.getMovies()
           .then((movies) => {
@@ -74,7 +75,6 @@ function App() {
 
   function onLogin() {
     getCurrentUser();
-    navigate('/movies');
   }
 
   function handleSaveCard(movieTarget) {
